@@ -3,7 +3,8 @@ Documentation for Random Characters API
 
 ## About
 
-An API serving characters (and their quotes) from tv shows and movies.
+An API serving characters (and their quotes) from tv shows and movies. <br/>
+The actual repo containing the backend and frontend is private, this repo is mainly for description, API feedback & character suggestions.
 Inspired by this [Anime API](https://github.com/rocktimsaikia/anime-chan/tree/main) I used in a project in 2021.
 
 ## Development + Stack
@@ -13,8 +14,8 @@ Inspired by this [Anime API](https://github.com/rocktimsaikia/anime-chan/tree/ma
 - React
 - Node.js
 
-Deployed using Cloud Run on Google Cloud Platform.\
-(First time trying out TailwindCSS)
+Deployed using Cloud Run on Google Cloud Platform. <br/>
+Used TailwindCSS for the first time :)
 
 ## Routes
 
