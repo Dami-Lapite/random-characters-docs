@@ -4,7 +4,7 @@ Documentation for Random Characters API
 ## About
 
 An API serving characters (and their quotes) from tv shows and movies. <br/>
-The actual repo containing the backend and frontend is private, this repo is mainly for description, API feedback & character suggestions.
+The actual repo containing the backend and frontend is private, this repo is mainly for description, API feedback & character suggestions. <br/>
 Inspired by this [Anime API](https://github.com/rocktimsaikia/anime-chan/tree/main) I used in a project in 2021.
 
 ## Development + Stack
