@@ -9,7 +9,7 @@ export default class Documentation extends Component {
         <NavBar content={this.props.content.navBar} />
         <div className="block w-full h-max">
           <div className="flex flex-col w-10/12 mx-auto my-16">
-            <p className="text-xl lg:text-4xl font-semibold text-left mt-4 text-pink-600">
+            <p className="text-xl lg:text-4xl font-semibold text-left mt-4 text-gray-600">
               {this.props.content.docs.header}
             </p>
             <p className="text-sm lg:text-base font-normal text-left mt-2 text-gray-500">
@@ -17,7 +17,7 @@ export default class Documentation extends Component {
             </p>
             <ul className="my-8 list-inside list-disc">
               {this.props.content.docs.sections.map((section) => (
-                <li className="my-2 text-base lg:text-lg font-normal text-gray-600 underline decoration-1 underline-offset-4">
+                <li className="my-2 text-base lg:text-lg font-normal text-gray-600 underline decoration-1 underline-offset-4 hover:text-sky-600">
                   <a href={section.link}>{section.title}</a>
                 </li>
               ))}
@@ -28,11 +28,11 @@ export default class Documentation extends Component {
               </p>
               {this.props.content.docs.availableRoutesSection.routes.map(
                 (routeItem) => (
-                  <div className="my-10">
-                    <p className="text-indigo-600 text-base lg:text-xl font-medium my-4">
+                  <div className="my-10 bg-gray-100 p-4 rounded">
+                    <p className="text-sky-600 text-base lg:text-xl font-medium my-4">
                       {routeItem.title}
                     </p>
-                    <p className="my-4 bg-gray-200 text-sm lg:text-base rounded p-2 text-gray-600 w-fit">
+                    <p className="my-4 bg-gray-300 text-sm lg:text-base rounded p-2 text-gray-700 w-fit">
                       {routeItem.endpoint}
                     </p>
                     <p className="text-sm lg:text-base leading-relaxed font-normal my-4 text-gray-600">
@@ -61,12 +61,25 @@ export default class Documentation extends Component {
               {this.props.content.docs.queryOptionsSection.options.map(
                 (option) => (
                   <div className="my-5">
-                    <p className="text-base lg:text-xl font-medium my-4 text-indigo-600">
+                    <p className="text-base lg:text-xl font-medium my-4 text-sky-600">
                       {option.name}
                     </p>
                     <p className="text-sm lg:text-base font-normal my-4 text-gray-600">
                       {option.description}
                     </p>
+                    <div className="bg-gray-900 py-6 px-5 my-1 rounded text-xs lg:text-sm font-medium">
+                      <pre className="overflow-auto whitespace-normal break-all">
+                        <code>
+                          <span className="text-sky-100">
+                            {
+                              this.props.content.docs.queryOptionsSection
+                                .samplePrefix
+                            }
+                          </span>
+                          <span className="text-sky-400">{option.sample}</span>
+                        </code>
+                      </pre>
+                    </div>
                   </div>
                 )
               )}

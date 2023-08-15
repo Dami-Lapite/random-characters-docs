@@ -38,14 +38,14 @@
       "link": "AvailableRoutes",
       "routes": [
         {
-          "title": "Get a random character",
+          "title": "Get A Random Character",
           "endpoint": "/characters/random",
-          "description": "Returns a single random character. Currently doesn't filter using query options."
+          "description": "Returns a single random character. Doesn't support filtering with query options."
         },
         {
-          "title": "Get all characters",
+          "title": "Get (10-max) Random Characters",
           "endpoint": "/characters",
-          "description": "Returns all characters matching the specified query options (if provided). Working on pagination."
+          "description": "Returns random characters (10 is the default if limit isn't provided in query params) matching the specified query options (if provided)."
         }
       ]
     },
@@ -57,26 +57,32 @@
         "Queries aren't case-sensitive",
         "Including an unexpected query param will return a 422 error"
       ],
+      "samplePrefix": "https://api.randomcharacters.app/characters?",
       "options": [
         {
           "name": "limit",
-          "description": "Limits number of results to specified number"
+          "description": "Limits number of results to specified number",
+          "sample": "limit=3"
         },
         {
           "name": "firstname",
-          "description": "Returns characters with the specified firstname"
+          "description": "Returns characters with the specified firstname",
+          "sample": "firstname=michael"
         },
         {
           "name": "lastname",
-          "description": "Returns characters with the specified lastname"
+          "description": "Returns characters with the specified lastname",
+          "sample": "lastname=bluth"
         },
         {
           "name": "gender",
-          "description": "Returns characters with the specified gender"
+          "description": "Returns characters with the specified gender",
+          "sample": "gender=F"
         },
         {
           "name": "origin",
-          "description": "Returns characters with the specified origin. Origin should be alphanumeric characters with _ to replace spaces. E.g 'The Office' would be 'the_office'."
+          "description": "Returns characters with the specified origin. Origin should be alphanumeric characters with _ to replace spaces. E.g 'The Office' would be 'the_office'.",
+          "sample": "origin=the_office"
         }
       ]
     }

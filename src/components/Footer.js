@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <div id="Footer" className="flex flex-col items-center">
         <a
-          className="m-2 text-sm lg:text-base transition ease-in-out text-gray-600 font-normal underline underline-offset-4 decoration-pink-600 hover:text-pink-600 cursor-pointer"
+          className="m-2 text-sm lg:text-base transition ease-in-out text-gray-600 font-normal underline underline-offset-4 decoration-sky-600 hover:text-sky-600 cursor-pointer"
           target="_blank"
           rel="noreferrer"
           href={this.props.content.portfolioLink}

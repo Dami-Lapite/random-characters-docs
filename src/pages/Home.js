@@ -6,6 +6,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       fetchSuccess: false,
       sampleResponse: null,
     };
@@ -22,17 +23,22 @@ export default class Home extends Component {
   }
 
   runSample = () => {
+    this.setState({
+      isLoading: true,
+    });
     this.fetchSampleUrl(
       "https://api.randomcharacters.app/characters/random"
     ).then(
       (data) => {
         this.setState({
+          isLoading: false,
           fetchSuccess: true,
           sampleResponse: JSON.stringify(data, null, 4),
         });
       },
       (error) => {
         this.setState({
+          isLoading: false,
           sampleResponse: { message: "Fetch Failed" },
         });
         console.log(error);
@@ -45,13 +51,13 @@ export default class Home extends Component {
       <div id="Home" className="flex flex-col w-full h-max">
         <NavBar content={this.props.content.navBar} />
         <div className="block w-full h-max">
-          <p className="text-xl lg:text-4xl leading-relaxed font-semibold text-center text-transparent m-10 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          <p className="text-xl lg:text-4xl leading-relaxed font-semibold text-center text-transparent m-10 bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
             {this.props.content.home.header}
           </p>
           <p className="text-sm lg:text-base font-light text-center m-5 text-gray-500">
             {this.props.content.home.subtext}
             <a
-              className="transition ease-in-out underline text-gray-500 underline-offset-4 decoration-pink-600 hover:text-pink-600 cursor-pointer"
+              className="transition ease-in-out underline text-gray-500 underline-offset-4 decoration-sky-600 hover:text-sky-600 cursor-pointer"
               target="_blank"
               rel="noreferrer"
               href={this.props.content.home.feedbackLink}
@@ -71,19 +77,17 @@ export default class Home extends Component {
                 <div className="bg-gray-900 py-6 px-5 my-1 rounded text-xs lg:text-sm font-medium">
                   <pre className="overflow-auto whitespace-normal break-all">
                     <code>
-                      <span className="text-indigo-400">
+                      <span className="text-sky-400">
                         {this.props.content.home.demoDomain}
                       </span>
-                      <span className="text-indigo-100">
-                        {request.endpoint}
-                      </span>
+                      <span className="text-sky-100">{request.endpoint}</span>
                     </code>
                   </pre>
                 </div>
               </div>
             ))}
             <div
-              className="my-4 transition ease-in-out bg-rose-600 px-4 py-2 font-medium w-fit text-white text-sm lg:text-base rounded hover:bg-rose-700 hover:scale-110 hover:translate-y-1 cursor-pointer"
+              className="my-4 transition ease-in-out bg-sky-600 px-4 py-2 font-medium w-fit text-white text-sm lg:text-base rounded hover:bg-sky-700 hover:scale-110 hover:translate-y-1 cursor-pointer"
               onClick={this.runSample}
             >
               <p>{this.props.content.home.sampleButtonLabel}</p>
@@ -91,7 +95,11 @@ export default class Home extends Component {
             <p className="text-gray-600 text-base lg:text-lg my-3 font-semibold">
               {this.props.content.home.sampleResponseLabel}
             </p>
-            <div className="bg-gray-900 py-7 px-5 my-4 w-full rounded text-xs lg:text-sm font-medium text-indigo-100">
+            <div
+              className={` ${
+                this.state.isLoading ? "animate-pulse" : ""
+              } bg-gray-900 py-7 px-5 my-4 w-full rounded text-xs lg:text-sm font-medium text-sky-100`}
+            >
               {this.state.sampleResponse && (
                 <div>
                   {this.state.fetchSuccess ? (

@@ -16,7 +16,7 @@ export default class NavBar extends Component {
         </div>
         <div className="md:float-right m-5 flex">
           <Link
-            className="mr-4 inline text-base lg:text-lg underline underline-offset-4 transition ease-in-out decoration-pink-600 hover:text-pink-600 font-light text-gray-500 cursor-pointer"
+            className="mr-4 inline text-base lg:text-lg underline underline-offset-4 transition ease-in-out decoration-sky-600 hover:text-sky-600 font-light text-gray-500 cursor-pointer"
             to="/docs"
           >
             {this.props.content.docsLabel}
