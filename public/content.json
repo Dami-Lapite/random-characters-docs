@@ -1,0 +1,208 @@
+{
+  "navBar": {
+    "title": "Random Characters API",
+    "docsLabel": "Documentation",
+    "githubLink": "https://github.com/Dami-Lapite/random-characters-docs"
+  },
+  "home": {
+    "header": "A Restful API providing character profiles from movies and TV shows",
+    "feedbackLink": "https://github.com/Dami-Lapite/random-characters-docs/discussions/1",
+    "feedbackLabel": "here.",
+    "subtext": "This project is in active development. You can provide feedback ",
+    "sampleRequestsLabel": "Sample Request URL",
+    "demoDomain": "https://api.randomcharacters.app",
+    "sampleRequests": [
+      {
+        "description": "Get a random character",
+        "endpoint": "/characters/random"
+      }
+    ],
+    "sampleButtonLabel": "Run Sample",
+    "sampleResponseLabel": "Sample Response"
+  },
+  "docs": {
+    "header": "API Documentation",
+    "subtext": "Guidelines on using this API",
+    "sections": [
+      {
+        "title": "Available GET Routes",
+        "link": "#AvailableRoutes"
+      },
+      {
+        "title": "Query Options",
+        "link": "#QueryOptions"
+      }
+    ],
+    "schemaSection": {
+      "header": "Character Fields",
+      "link": "Schema",
+      "requiredLabel": "Required",
+      "uniqueLabel": "Unique",
+      "properties": [
+        {
+          "name": "name",
+          "type": "Object",
+          "isRequired": "true",
+          "isUnique": "false",
+          "description": "Name of the character, contains firstname and lastname strings.",
+          "stub": {
+            "name": {
+              "firstname": "Jane",
+              "lastname": "Doe"
+            }
+          },
+          "restrictions": [
+            "firstname and lastname must be Strings containing only alphabetic characters",
+            "firstname and lastname have a minimum length of 1 and max lenth of 20 characters "
+          ]
+        },
+        {
+          "name": "alias",
+          "type": "String",
+          "isRequired": "true",
+          "isUnique": "true",
+          "description": "An alias of the character, could be an actual nickname or what I assume their social handle would be.",
+          "restrictions": [
+            "permitted characters are alphanumeric characters and the underscore character (_)",
+            "minimum length of 1 and max lenth of 20 characters "
+          ]
+        },
+        {
+          "name": "origin",
+          "type": "String",
+          "isRequired": "true",
+          "isUnique": "false",
+          "description": "The work the character originates from",
+          "restrictions": [
+            "permitted characters are alphanumeric characters and the underscore character (_)",
+            "minimum length of 1 and max lenth of 100 characters "
+          ]
+        },
+        {
+          "name": "gender",
+          "type": "String",
+          "isRequired": "false",
+          "isUnique": "false",
+          "description": "Gender of the character.",
+          "restrictions": [
+            "enum field which only accepts 'M' , 'F', or 'X' as values",
+            "defaults to 'X' if not provided"
+          ]
+        },
+        {
+          "name": "living",
+          "type": "Boolean",
+          "isRequired": "false",
+          "isUnique": "false",
+          "description": "Boolean indicating if the character is living or not.",
+          "restrictions": [
+            "accepts only boolean values",
+            "defaults to true if not provided"
+          ]
+        },
+        {
+          "name": "dob",
+          "type": "String",
+          "isRequired": "true",
+          "isUnique": "false",
+          "description": "Date of birth of the character in DD-MM-YYYY format.",
+          "stub": {
+            "dob": "15-06-1990"
+          },
+          "restrictions": [
+            "accepts only valid dates (dates on a calendar)",
+            "doesn't accept dates in the future"
+          ]
+        },
+        {
+          "name": "tags",
+          "type": "Array[String]",
+          "isRequired": "false",
+          "isUnique": "false",
+          "description": "One-word descriptions of the character.",
+          "stub": {
+            "tags": ["tall", "weird", "scientist"]
+          },
+          "restrictions": [
+            "each tag must be an alphabetic string with a max length of 15",
+            "maximum of 10 tags per character"
+          ]
+        },
+        {
+          "name": "fact",
+          "type": "String",
+          "isRequired": "false",
+          "isUnique": "false",
+          "description": "Fun fact about the character.",
+          "restrictions": [
+            "permitted characters are alphanumeric characters and these characters %!:;#-?()$.,&'\"",
+            "minimum length of 1 and max lenth of 50 characters "
+          ]
+        },
+        {
+          "name": "quote",
+          "type": "String",
+          "isRequired": "false",
+          "isUnique": "false",
+          "description": "A quote from the character.",
+          "restrictions": [
+            "permitted characters are alphanumeric characters and these characters %!:;#-?()$.,&'\"",
+            "minimum length of 1 and max lenth of 100 characters "
+          ]
+        }
+      ]
+    },
+    "availableRoutesSection": {
+      "header": "Available GET Routes",
+      "link": "AvailableRoutes",
+      "routes": [
+        {
+          "title": "Get a random character",
+          "endpoint": "/characters/random",
+          "description": "Returns a single random character. Currently doesn't filter using query options."
+        },
+        {
+          "title": "Get all characters",
+          "endpoint": "/characters",
+          "description": "Returns all characters matching the specified query options (if provided). Working on pagination."
+        }
+      ]
+    },
+    "queryOptionsSection": {
+      "header": "Query Options",
+      "link": "QueryOptions",
+      "notesLabel": "Note:",
+      "notes": [
+        "Queries aren't case-sensitive",
+        "Including an unexpected query param will return a 422 error"
+      ],
+      "options": [
+        {
+          "name": "limit",
+          "description": "Limits number of results to specified number"
+        },
+        {
+          "name": "firstname",
+          "description": "Returns characters with the specified firstname"
+        },
+        {
+          "name": "lastname",
+          "description": "Returns characters with the specified lastname"
+        },
+        {
+          "name": "gender",
+          "description": "Returns characters with the specified gender"
+        },
+        {
+          "name": "origin",
+          "description": "Returns characters with the specified origin. Origin should be alphanumeric characters with _ to replace spaces. E.g 'The Office' would be 'the_office'."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "developer": "Designed & Developed by Dami Lapite - 2023",
+    "portfolioLink": "https://www.damilapite.com/",
+    "iconsLink": "https://icons8.com/"
+  }
+}
